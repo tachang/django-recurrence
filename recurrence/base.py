@@ -851,9 +851,8 @@ def serialize(rule_or_recurrence):
     def serialize_rule(rule):
         values = []
         values.append((u'FREQ', [Rule.frequencies[rule.freq]]))
+        values.append((u'INTERVAL', [str(int(rule.interval))]))
 
-        if rule.interval != 1:
-            values.append((u'INTERVAL', [str(int(rule.interval))]))
         if rule.wkst:
             values.append((u'WKST', [Rule.weekdays[getattr(rule.wkst, 'number', rule.wkst)]]))
 
